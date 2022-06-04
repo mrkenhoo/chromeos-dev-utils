@@ -4,8 +4,7 @@ setup_sid_repos()
 {
     sudo dpkg --add-architecture i386
 	echo "deb https://deb.debian.org/debian sid main contrib non-free" | sudo tee /etc/apt/sources.list
-	sudo apt clean && sudo apt autoclean
-	sudo apt update && sudo apt full-upgrade -y
+	sudo apt clean && sudo apt autoclean && sudo apt update && sudo apt full-upgrade -y
 }
 
 setup_winehq()
@@ -29,8 +28,7 @@ setup_lutris()
 {
 	echo "deb http://download.opensuse.org/repositories/home:/strycore/Debian_11/ ./" | sudo tee /etc/apt/sources.list.d/lutris.list
 	wget -q https://download.opensuse.org/repositories/home:/strycore/Debian_11/Release.key -O- | sudo tee /etc/apt/trusted.gpg.d/lutris.asc -
-	sudo apt update
-	sudo apt install lutris
+	sudo apt update && sudo apt install -y lutris
 }
 
 setup_vscodium()
@@ -40,7 +38,7 @@ setup_vscodium()
     	| sudo dd of=/usr/share/keyrings/vscodium-archive-keyring.gpg
 
 		echo 'deb [ signed-by=/usr/share/keyrings/vscodium-archive-keyring.gpg ] https://download.vscodium.com/debs vscodium main' \
-    | sudo tee /etc/apt/sources.list.d/vscodium.list
+        | sudo tee /etc/apt/sources.list.d/vscodium.list
 
 	sudo apt update && sudo apt install -y codium
 }
@@ -67,6 +65,7 @@ clean_system() {
 setup_sid_repos
 setup_winehq
 setup_steam
+setup_lutris
 setup_vscodium
 setup_github_desktop
 setup_whatsapp_for_linux
