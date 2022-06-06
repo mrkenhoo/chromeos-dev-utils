@@ -21,7 +21,7 @@ setup_winehq()
 
 setup_steam()
 {
-	sudo apt install steam mesa-vulkan-drivers libglx-mesa0:i386 mesa-vulkan-drivers:i386 libgl1-mesa-dri:i386 -y
+	sudo apt install steam mesa-vulkan-drivers libglx-mesa0:i386 mesa-vulkan-drivers:i386 libgl1-mesa-dri:i386 mangohud dxvk --install-recommends -y
 }
 
 setup_lutris()
@@ -53,6 +53,11 @@ setup_whatsapp_for_linux()
 	sudo sh whatsapp-for-linux-updater.sh
 }
 
+setup_spotify()
+{
+    sudo apt install -y flatpak && sudo flatpak install -y spotify
+}
+
 setup_qemu_kvm()
 {
 	sudo apt install -y virt-manager ovmf qemu-kvm bridge-utils
@@ -69,5 +74,6 @@ setup_lutris
 setup_vscodium
 setup_github_desktop
 setup_whatsapp_for_linux
+setup_spotify
 setup_qemu_kvm
 clean_system
